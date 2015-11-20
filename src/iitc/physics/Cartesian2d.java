@@ -7,9 +7,9 @@ package iitc.physics;
  * @version 1.0
  */
 public class Cartesian2d {
+    public static final Cartesian2d ORIGIN = new Cartesian2d(0, 0);
     private final double x;
     private final double y;
-    public static final Cartesian2d ORIGIN = new Cartesian2d(0, 0);
 
     public Cartesian2d() {
         this(0, 0);

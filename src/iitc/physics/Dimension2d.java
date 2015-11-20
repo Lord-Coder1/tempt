@@ -34,6 +34,30 @@ public class Dimension2d {
         return x >= 0 && x < getWidth() && y >= 0 && y < getHeight();
     }
 
+    public boolean contains(double x, double y, double width, double height) {
+        double dw = this.width;
+        double dh = this.height;
+        double dx = 0;
+        double dy = 0;
+        if (x < dx || y < dy)
+            return false;
+        dw += dx;
+        width += x;
+        if (width <= x) {
+            if (dw >= dx || width > dw) return false;
+        } else {
+            if (dw >= dx && width > dw) return false;
+        }
+        dh += dy;
+        height += y;
+        if (height <= y) {
+            if (dh >= dy || height > dh) return false;
+        } else {
+            if (dh >= dy && height > dh) return false;
+        }
+        return true;
+    }
+
     @Override
     public int hashCode() {
         long bits = Double.doubleToLongBits(getWidth());

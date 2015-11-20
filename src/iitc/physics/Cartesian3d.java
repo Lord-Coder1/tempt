@@ -7,10 +7,10 @@ package iitc.physics;
  * @version 1.0
  */
 public class Cartesian3d {
+    public static final Cartesian3d ORIGIN = new Cartesian3d(0, 0);
     private final double x;
     private final double y;
     private final double z;
-    public static final Cartesian3d ORIGIN = new Cartesian3d(0, 0);
 
     public Cartesian3d() {
         this(0, 0);

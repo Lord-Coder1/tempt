@@ -7,8 +7,6 @@ package iitc.physics;
  * @version 1.0
  */
 public class Vector2d {
-    private final double x;
-    private final double y;
     public static final Vector2d ORIGIN = new Vector2d(0, 0);
     public static final Vector2d NORTH = new Vector2d(0, 1);
     public static final Vector2d NORTHWEST = new Vector2d(-1, 1);
@@ -18,6 +16,8 @@ public class Vector2d {
     public static final Vector2d SOUTHEAST = new Vector2d(1, -1);
     public static final Vector2d WEST = new Vector2d(-1, 0);
     public static final Vector2d EAST = new Vector2d(1, 0);
+    private final double x;
+    private final double y;
 
     public Vector2d(Vector3d vector) {
         if (vector == null)
@@ -56,5 +56,10 @@ public class Vector2d {
     @Override
     public boolean equals(Object o) {
         return o instanceof Vector2d && getX() == ((Vector2d) o).getX() && getY() == ((Vector2d) o).getY();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%s[x=%s, y=%s]", getClass().getCanonicalName(), getX(), getY());
     }
 }

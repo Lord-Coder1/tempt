@@ -22,10 +22,14 @@ public class GameTest {
     public static void main(String[] args) throws IOException {
         final Scene scene = new Scene(0, 0, 900, 900);
         scene.setBackground(Color.BLACK);
-        SceneEntity2d paddle = new SceneEntity2d(0, new Dimension2d(200, 20), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
+        SceneEntity2d paddle = new SceneEntity2d(0, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
         paddle.setPosition(new Cartesian2d(50, 50));
-        paddle.setVelocity(new Vector2d(100, 100));
+        paddle.setVelocity(new Vector2d(100, 0));
         scene.add(paddle);
+        SceneEntity2d paddle2 = new SceneEntity2d(0, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
+        paddle2.setPosition(new Cartesian2d(750, 50));
+        paddle2.setVelocity(new Vector2d(-100, 0));
+        scene.add(paddle2);
         final JFrame frame = new JFrame("Game Test");
         final ImageIcon icon = new ImageIcon(scene.render());
         frame.setContentPane(new JLabel(icon));

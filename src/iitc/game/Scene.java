@@ -51,9 +51,9 @@ public class Scene {
 
     public synchronized void update() {
         synchronized (entities) {
+            long time = System.currentTimeMillis();
             for (SceneEntity2d entity : entities) {
                 Long update = updateTimes.get(entity);
-                long time = System.currentTimeMillis();
                 if (update != null)
                     entity.getMotion().setPosition(Motion.getPosition((time - update) / 1000.0d, entity.getMotion().getPosition(), entity.getMotion().getVelocity(), entity.getMotion().getAcceleration()));
                 updateTimes.put(entity, time);

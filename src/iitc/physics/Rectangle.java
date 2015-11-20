@@ -24,6 +24,10 @@ public class Rectangle implements Shape2d {
         this(base.getX(), base.getY(), width, height);
     }
 
+    public Rectangle(Cartesian2d base, Dimension2d dimension) {
+        this(base.getX(), base.getY(), dimension.getWidth(), dimension.getHeight());
+    }
+
     public Rectangle(double x, double y, double width, double height) {
         if (width < 0 || height < 0)
             throw new IllegalArgumentException();
@@ -79,6 +83,65 @@ public class Rectangle implements Shape2d {
     @Override
     public boolean contains(double x, double y) {
         return x >= getX() && x < getMaxX() && y >= getY() && y < getMaxY();
+    }
+
+    public boolean contains(Cartesian2d base, Dimension2d size) {
+        return base != null && size != null && contains(base.getX(), base.getY(), size.getWidth(), size.getHeight());
+    }
+
+    public boolean contains(Rectangle rectangle) {
+        return rectangle != null && contains(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
+    }
+
+    public boolean contains(double x, double y, double width, double height) {
+        double dw = this.width;
+        double dh = this.height;
+        double dx = getX();
+        double dy = getY();
+        if (x < dx || y < dy)
+            return false;
+        dw += dx;
+        width += x;
+        if (width <= x) {
+            if (dw >= dx || width > dw) return false;
+        } else {
+            if (dw >= dx && width > dw) return false;
+        }
+        dh += dy;
+        height += y;
+        if (height <= y) {
+            if (dh >= dy || height > dh) return false;
+        } else {
+            if (dh >= dy && height > dh) return false;
+        }
+        return true;
+    }
+
+    public boolean intersects(Rectangle rectangle) {
+        return rectangle != null && intersects(rectangle.getX(), rectangle.getY(), rectangle.getWidth(), rectangle.getHeight());
+    }
+
+    public boolean intersects(Cartesian2d base, Dimension2d size) {
+        return base != null && size != null && intersects(base.getX(), base.getY(), size.getWidth(), size.getHeight());
+    }
+
+    public boolean intersects(double x, double y, double width, double height) {
+        double tw = getWidth();
+        double th = getHeight();
+        double rw = width;
+        double rh = height;
+        if (rw <= 0 || rh <= 0 || tw <= 0 || th <= 0)
+            return false;
+        double tx = this.getX();
+        double ty = this.getY();
+        rw += x;
+        rh += y;
+        tw += tx;
+        th += ty;
+        return ((rw < x || rw > tx) &&
+                (rh < y || rh > ty) &&
+                (tw < tx || tw > x) &&
+                (th < ty || th > y));
     }
 
     @Override

@@ -150,4 +150,12 @@ public class Vector {
         double sqrt = magnitude(vector);
         return new Vector3d(vector.getX() / sqrt, vector.getY() / sqrt, vector.getZ() / sqrt);
     }
+
+    public static Vector2d inverse(Vector2d vector) {
+        return vector == null ? null : new Vector2d(-vector.getX(), -vector.getY());
+    }
+
+    public static Vector3d inverse(Vector3d vector) {
+        return vector == null ? null : new Vector3d(-vector.getX(), -vector.getY(), -vector.getZ());
+    }
 }
