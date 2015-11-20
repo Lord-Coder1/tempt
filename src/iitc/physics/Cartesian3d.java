@@ -16,6 +16,10 @@ public class Cartesian3d {
         this(0, 0);
     }
 
+    public Cartesian3d(Cartesian2d point) {
+        this(point.getX(), point.getY());
+    }
+
     public Cartesian3d(double x, double y) {
         this(x, y, 0);
     }

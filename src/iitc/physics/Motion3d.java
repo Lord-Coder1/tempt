@@ -7,21 +7,21 @@ package iitc.physics;
  * @version 1.0
  */
 public class Motion3d {
-    private Vector3d location;
+    private Cartesian3d position;
     private Vector3d velocity;
     private Vector3d acceleration;
 
     public Motion3d() {
-        this(new Vector3d(0, 0), new Vector3d(0, 0), new Vector3d(0, 0));
+        this(new Cartesian3d(0, 0), new Vector3d(0, 0), new Vector3d(0, 0));
     }
 
     public Motion3d(Motion2d movement) {
         if (movement == null)
             throw new IllegalArgumentException();
-        Vector2d location = movement.getLocation();
+        Cartesian2d location = movement.getPosition();
         Vector2d velocity = movement.getVelocity();
         Vector2d acceleration = movement.getAcceleration();
-        this.location = location == null ? null : new Vector3d(location);
+        this.position = location == null ? null : new Cartesian3d(location);
         this.velocity = velocity == null ? null : new Vector3d(velocity);
         this.acceleration = acceleration == null ? null : new Vector3d(acceleration);
     }
@@ -29,23 +29,23 @@ public class Motion3d {
     public Motion3d(Motion3d movement) {
         if (movement == null)
             throw new IllegalArgumentException();
-        this.location = movement.getLocation();
+        this.position = movement.getPosition();
         this.velocity = movement.getVelocity();
         this.acceleration = movement.getAcceleration();
     }
 
-    public Motion3d(Vector3d location, Vector3d velocity, Vector3d acceleration) {
-        this.location = location;
+    public Motion3d(Cartesian3d position, Vector3d velocity, Vector3d acceleration) {
+        this.position = position;
         this.velocity = velocity;
         this.acceleration = acceleration;
     }
 
-    public Vector3d getLocation() {
-        return location;
+    public Cartesian3d getPosition() {
+        return position;
     }
 
-    public void setLocation(Vector3d location) {
-        this.location = location;
+    public void setPosition(Cartesian3d position) {
+        this.position = position;
     }
 
     public Vector3d getVelocity() {

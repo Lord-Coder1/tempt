@@ -7,18 +7,18 @@ package iitc.physics;
  * @version 1.0
  */
 public class Motion2d {
-    private Vector2d location;
+    private Cartesian2d position;
     private Vector2d velocity;
     private Vector2d acceleration;
 
     public Motion2d() {
-        this(new Vector2d(0, 0), new Vector2d(0, 0), new Vector2d(0, 0));
+        this(new Cartesian2d(0, 0), new Vector2d(0, 0), new Vector2d(0, 0));
     }
 
     public Motion2d(Motion2d movement) {
         if (movement == null)
             throw new IllegalArgumentException();
-        this.location = movement.getLocation();
+        this.position = movement.getPosition();
         this.velocity = movement.getVelocity();
         this.acceleration = movement.getAcceleration();
     }
@@ -26,26 +26,26 @@ public class Motion2d {
     public Motion2d(Motion3d movement) {
         if (movement == null)
             throw new IllegalArgumentException();
-        Vector3d location = movement.getLocation();
+        Cartesian3d location = movement.getPosition();
         Vector3d velocity = movement.getVelocity();
         Vector3d acceleration = movement.getAcceleration();
-        this.location = location == null ? null : new Vector2d(location);
+        this.position = location == null ? null : new Cartesian2d(location);
         this.velocity = velocity == null ? null : new Vector2d(velocity);
         this.acceleration = acceleration == null ? null : new Vector2d(acceleration);
     }
 
-    public Motion2d(Vector2d location, Vector2d velocity, Vector2d acceleration) {
-        this.location = location;
+    public Motion2d(Cartesian2d position, Vector2d velocity, Vector2d acceleration) {
+        this.position = position;
         this.velocity = velocity;
         this.acceleration = acceleration;
     }
 
-    public Vector2d getLocation() {
-        return location;
+    public Cartesian2d getPosition() {
+        return position;
     }
 
-    public void setLocation(Vector2d location) {
-        this.location = location;
+    public void setPosition(Cartesian2d position) {
+        this.position = position;
     }
 
     public Vector2d getVelocity() {
