@@ -30,6 +30,30 @@ public class Entity2d extends Entity {
         return size;
     }
 
+    public Cartesian2d getPosition() {
+        return getMotion().getPosition();
+    }
+
+    public void setPosition(Cartesian2d position) {
+        getMotion().setPosition(position);
+    }
+
+    public Vector2d getVelocity() {
+        return getMotion().getVelocity();
+    }
+
+    public void setVelocity(Vector2d velocity) {
+        getMotion().setVelocity(velocity);
+    }
+
+    public Vector2d getAcceleration() {
+        return getMotion().getAcceleration();
+    }
+
+    public void setAcceleration(Vector2d acceleration) {
+        getMotion().setAcceleration(acceleration);
+    }
+
     @Override
     public int hashCode() {
         long bits = 7L;

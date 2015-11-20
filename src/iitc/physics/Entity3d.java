@@ -30,6 +30,30 @@ public class Entity3d extends Entity {
         return size;
     }
 
+    public Cartesian3d getPosition() {
+        return getMotion().getPosition();
+    }
+
+    public void setPosition(Cartesian3d position) {
+        getMotion().setPosition(position);
+    }
+
+    public Vector3d getVelocity() {
+        return getMotion().getVelocity();
+    }
+
+    public void setVelocity(Vector3d velocity) {
+        getMotion().setVelocity(velocity);
+    }
+
+    public Vector3d getAcceleration() {
+        return getMotion().getAcceleration();
+    }
+
+    public void setAcceleration(Vector3d acceleration) {
+        getMotion().setAcceleration(acceleration);
+    }
+
     @Override
     public int hashCode() {
         long bits = 7L;

@@ -23,8 +23,8 @@ public class GameTest {
         final Scene scene = new Scene(0, 0, 900, 900);
         scene.setBackground(Color.BLACK);
         SceneEntity2d paddle = new SceneEntity2d(0, new Dimension2d(200, 20), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
-        paddle.getMotion().setPosition(new Cartesian2d(50, 50));
-        paddle.getMotion().setVelocity(new Vector2d(100, 100));
+        paddle.setPosition(new Cartesian2d(50, 50));
+        paddle.setVelocity(new Vector2d(100, 100));
         scene.add(paddle);
         final JFrame frame = new JFrame("Game Test");
         final ImageIcon icon = new ImageIcon(scene.render());
