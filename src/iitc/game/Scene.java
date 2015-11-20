@@ -130,9 +130,16 @@ public class Scene {
             long time = System.currentTimeMillis();
             for (SceneEntity2d entity : entities) {
                 Long update = updateTimes.get(entity);
-                //TODO:Apply acceleration to the entity velocity
-                if (update != null)
-                    entity.getMotion().setPosition(Motion.getPosition((time - update) / 1000.0d, entity));
+                if (update != null) {
+                    double t = (time - update) / 1000.0d;
+                    entity.setPosition(Motion.getPosition(t, entity));
+                    Vector2d velocity = entity.getVelocity();
+                    if (velocity != null) {
+                        Vector2d acceleration = entity.getAcceleration();
+                        if (acceleration != null)
+                            entity.setVelocity(velocity.getX() + t * acceleration.getX(), velocity.getY() + t * acceleration.getY());
+                    }
+                }
                 updateTimes.put(entity, time);
             }
             image = null;

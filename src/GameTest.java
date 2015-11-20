@@ -20,7 +20,7 @@ public class GameTest {
     public static void main(String[] args) throws IOException {
         final Scene scene = new Scene(0, 0, 900, 900);
         scene.setBackground(Color.BLACK);
-        SceneEntity2d paddle = new SceneEntity2d(250, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
+        SceneEntity2d paddle = new SceneEntity2d(50, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
         paddle.setPosition(50, 50);
         paddle.setVelocity(600, 450);
         scene.add(paddle);
