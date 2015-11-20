@@ -162,4 +162,9 @@ public class Rectangle implements Shape2d {
                 getWidth() == ((Rectangle) o).getWidth() &&
                 getHeight() == ((Rectangle) o).getHeight();
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s[x=%s, y=%s, width=%s, height=%s]", getClass().getCanonicalName(), getX(), getY(), getWidth(), getHeight());
+    }
 }

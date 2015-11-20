@@ -47,4 +47,9 @@ public class Cartesian2d {
     public boolean equals(Object o) {
         return o instanceof Cartesian2d && getX() == ((Cartesian2d) o).getX() && getY() == ((Cartesian2d) o).getY();
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s[x=%s, y=%s]", getClass().getCanonicalName(), getX(), getY());
+    }
 }

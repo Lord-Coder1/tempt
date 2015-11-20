@@ -67,4 +67,9 @@ public class Vector3d {
     public boolean equals(Object o) {
         return o instanceof Vector3d && getX() == ((Vector3d) o).getX() && getY() == ((Vector3d) o).getY();
     }
+
+    @Override
+    public String toString() {
+        return String.format("%s[x=%s, y=%s, z=%s]", getClass().getCanonicalName(), getX(), getY(), getZ());
+    }
 }

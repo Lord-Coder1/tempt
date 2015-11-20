@@ -7,8 +7,8 @@ package iitc.physics;
  * @version 1.0
  */
 public class Polar2d {
-    private final double theta;
     private final double radius;
+    private final double theta;
 
     public Polar2d() {
         this(0, 0);
@@ -37,5 +37,9 @@ public class Polar2d {
     @Override
     public boolean equals(Object o) {
         return o instanceof Polar2d && getRadius() == ((Polar2d) o).getRadius() && getTheta() == ((Polar2d) o).getTheta();
+    }
+    @Override
+    public String toString() {
+        return String.format("%s[radius=%s, theta=%s]", getClass().getCanonicalName(), getRadius(), getTheta());
     }
 }

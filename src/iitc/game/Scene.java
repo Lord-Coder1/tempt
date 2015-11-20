@@ -2,7 +2,6 @@ package iitc.game;
 
 import iitc.physics.*;
 import iitc.physics.Rectangle;
-import iitc.physics.Vector;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -35,11 +34,14 @@ public class Scene {
         double height = bounds.getHeight();
         double halfHeight = height / 2.0d;
         double halfWidth = width / 2.0d;
-        this.walls = new Wall[]{new Wall(new Dimension2d(width, halfHeight)), new Wall(new Dimension2d(halfWidth, height)), new Wall(new Dimension2d(width, halfHeight)), new Wall(new Dimension2d(halfWidth, height))};
-        walls[0].setPosition(0, -halfHeight);
-        walls[1].setPosition(width, 0);
-        walls[2].setPosition(width, -halfHeight);
-        walls[3].setPosition(-halfWidth, 0);
+        this.walls = new Wall[]{new Wall(new Dimension2d(halfWidth, height), Wall.Side.LEFT),
+                new Wall(new Dimension2d(width, halfHeight), Wall.Side.TOP),
+                new Wall(new Dimension2d(halfWidth, height), Wall.Side.RIGHT),
+                new Wall(new Dimension2d(width, halfHeight), Wall.Side.BOTTOM)};
+        walls[0].setPosition(-halfWidth, 0);
+        walls[1].setPosition(0, -halfHeight);
+        walls[2].setPosition(width, 0);
+        walls[3].setPosition(0, height);
     }
 
     public void add(SceneEntity2d entity) {
@@ -90,9 +92,9 @@ public class Scene {
                         double oppositionMaxY = oppositionY + oppositionSize.getHeight();
                         if ((entityX < oppositionX && oppositionMaxX > entityMaxX && entityVelocity.getX() < 0 && oppositionVelocity.getX() > 0) || (entityY < oppositionY && oppositionMaxY > entityMaxY && entityVelocity.getY() < 0 && oppositionVelocity.getY() > 0))
                             continue;
-                        //TODO:Actually get the proper collision calculating momentum and using proper angles
-                        entity.setVelocity(Vector.inverse(entityVelocity));
-                        opposition.setVelocity(Vector.inverse(oppositionVelocity));
+                        VectorPair2d pair = Motion.getCollisionVelocity(entity, opposition);
+                        entity.setVelocity(pair.getLeft());
+                        opposition.setVelocity(pair.getRight());
                         if (entityVisits == null) {
                             entityVisits = new ArrayList<SceneEntity2d>();
                             visited.put(entity, entityVisits);
@@ -100,35 +102,36 @@ public class Scene {
                         entityVisits.add(opposition);
                     }
                 }
-                for (SceneEntity2d opposition : walls) {
-                    if ((entityVisits != null && entityVisits.contains(opposition)) || opposition.equals(entity))
+                for (SceneEntity2d wall : walls) {
+                    if ((entityVisits != null && entityVisits.contains(wall)) || wall.equals(entity))
                         continue;
-                    Cartesian2d oppositionPosition = opposition.getPosition();
-                    Vector2d oppositionVelocity = opposition.getVelocity();
-                    Dimension2d oppositionSize = opposition.getSize();
-                    if (rectangle.intersects(oppositionPosition, oppositionSize)) {
-                        double oppositionX = oppositionPosition.getX();
-                        double oppositionY = oppositionPosition.getY();
-                        double oppositionMaxX = oppositionX + oppositionSize.getWidth();
-                        double oppositionMaxY = oppositionY + oppositionSize.getHeight();
-                        if ((entityX < oppositionX && oppositionMaxX > entityMaxX && entityVelocity.getX() < 0 && oppositionVelocity.getX() > 0) || (entityY < oppositionY && oppositionMaxY > entityMaxY && entityVelocity.getY() < 0 && oppositionVelocity.getY() > 0))
+                    Cartesian2d wallPosition = wall.getPosition();
+                    Vector2d wallVelocity = wall.getVelocity();
+                    Dimension2d wallSize = wall.getSize();
+                    if (rectangle.intersects(wallPosition, wallSize)) {
+                        double wallX = wallPosition.getX();
+                        double wallY = wallPosition.getY();
+                        double wallMaxX = wallX + wallSize.getWidth();
+                        double wallMaxY = wallY + wallSize.getHeight();
+                        if ((entityX < wallX && wallMaxX > entityMaxX && entityVelocity.getX() < 0 && wallVelocity.getX() > 0) || (entityY < wallY && wallMaxY > entityMaxY && entityVelocity.getY() < 0 && wallVelocity.getY() > 0))
                             continue;
-                        //TODO:Actually get the proper collision calculating momentum and using proper angles
-                        entity.setVelocity(Vector.inverse(entityVelocity));
-                        opposition.setVelocity(Vector.inverse(oppositionVelocity));
+                        VectorPair2d pair = Motion.getCollisionVelocity(entity, wall);
+                        System.out.println(pair);
+                        entity.setVelocity(pair.getLeft());
                         if (entityVisits == null) {
                             entityVisits = new ArrayList<SceneEntity2d>();
                             visited.put(entity, entityVisits);
                         }
-                        entityVisits.add(opposition);
+                        entityVisits.add(wall);
                     }
                 }
             }
             long time = System.currentTimeMillis();
             for (SceneEntity2d entity : entities) {
                 Long update = updateTimes.get(entity);
+                //TODO:Apply acceleration to the entity velocity
                 if (update != null)
-                    entity.getMotion().setPosition(Motion.getPosition((time - update) / 1000.0d, entity.getMotion().getPosition(), entity.getMotion().getVelocity(), entity.getMotion().getAcceleration()));
+                    entity.getMotion().setPosition(Motion.getPosition((time - update) / 1000.0d, entity));
                 updateTimes.put(entity, time);
             }
             image = null;

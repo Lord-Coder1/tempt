@@ -1,8 +1,6 @@
 import iitc.game.Scene;
 import iitc.game.SceneEntity2d;
-import iitc.physics.Cartesian2d;
 import iitc.physics.Dimension2d;
-import iitc.physics.Vector2d;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -22,11 +20,11 @@ public class GameTest {
     public static void main(String[] args) throws IOException {
         final Scene scene = new Scene(0, 0, 900, 900);
         scene.setBackground(Color.BLACK);
-        SceneEntity2d paddle = new SceneEntity2d(0, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
+        SceneEntity2d paddle = new SceneEntity2d(50, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
         paddle.setPosition(50, 50);
-        paddle.setVelocity(300, 0);
+        paddle.setVelocity(300, 50);
         scene.add(paddle);
-        SceneEntity2d paddle2 = new SceneEntity2d(0, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
+        SceneEntity2d paddle2 = new SceneEntity2d(50, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
         paddle2.setPosition(750, 50);
         paddle2.setVelocity(-300, 0);
         scene.add(paddle2);
