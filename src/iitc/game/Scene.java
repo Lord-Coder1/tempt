@@ -86,6 +86,7 @@ public class Scene {
                     Vector2d oppositionVelocity = opposition.getVelocity();
                     Dimension2d oppositionSize = opposition.getSize();
                     if (rectangle.intersects(oppositionPosition, oppositionSize)) {
+                        //TODO:Correct to relieve all issues of interior collision by allowing objects escaping the containing object to continue moving
                         double oppositionX = oppositionPosition.getX();
                         double oppositionY = oppositionPosition.getY();
                         double oppositionMaxX = oppositionX + oppositionSize.getWidth();
@@ -109,6 +110,7 @@ public class Scene {
                     Vector2d wallVelocity = wall.getVelocity();
                     Dimension2d wallSize = wall.getSize();
                     if (rectangle.intersects(wallPosition, wallSize)) {
+                        //TODO:Correct to relieve all issues of interior collision by allowing objects escaping the containing object to continue moving
                         double wallX = wallPosition.getX();
                         double wallY = wallPosition.getY();
                         double wallMaxX = wallX + wallSize.getWidth();
