@@ -44,6 +44,10 @@ public class Motion2d {
         return position;
     }
 
+    public void setPosition(double x, double y) {
+        setPosition(new Cartesian2d(x, y));
+    }
+
     public void setPosition(Cartesian2d position) {
         this.position = position;
     }
@@ -52,12 +56,20 @@ public class Motion2d {
         return velocity;
     }
 
+    public void setVelocity(double x, double y) {
+        setVelocity(new Vector2d(x, y));
+    }
+
     public void setVelocity(Vector2d velocity) {
         this.velocity = velocity;
     }
 
     public Vector2d getAcceleration() {
         return acceleration;
+    }
+
+    public void setAcceleration(double x, double y) {
+        setAcceleration(new Vector2d(x, y));
     }
 
     public void setAcceleration(Vector2d acceleration) {

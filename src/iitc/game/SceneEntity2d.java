@@ -17,6 +17,14 @@ import java.awt.image.BufferedImage;
 public class SceneEntity2d extends Entity2d {
     private BufferedImage image;
 
+    public SceneEntity2d(double mass, Dimension2d size) {
+        super(mass, size);
+    }
+
+    public SceneEntity2d(double mass, Motion2d motion, Dimension2d size) {
+        super(mass, motion, size);
+    }
+
     public SceneEntity2d(double mass, Dimension2d size, BufferedImage image) {
         super(mass, size);
         this.image = image;
