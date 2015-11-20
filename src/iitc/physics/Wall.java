@@ -23,7 +23,7 @@ public class Wall extends SceneEntity2d {
     }
 
     public static enum Side {
-        LEFT(new Vector2d(1, 0)), TOP(new Vector2d(0, -1)), RIGHT(new Vector2d(-1, 0)), BOTTOM(new Vector2d(0, 1));
+        LEFT(Vector2d.EAST), TOP(Vector2d.SOUTH), RIGHT(Vector2d.WEST), BOTTOM(Vector2d.NORTH);
         private final Vector2d normal;
 
         Side(Vector2d normal) {

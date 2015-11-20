@@ -116,7 +116,6 @@ public class Scene {
                         if ((entityX < wallX && wallMaxX > entityMaxX && entityVelocity.getX() < 0 && wallVelocity.getX() > 0) || (entityY < wallY && wallMaxY > entityMaxY && entityVelocity.getY() < 0 && wallVelocity.getY() > 0))
                             continue;
                         VectorPair2d pair = Motion.getCollisionVelocity(entity, wall);
-                        System.out.println(pair);
                         entity.setVelocity(pair.getLeft());
                         if (entityVisits == null) {
                             entityVisits = new ArrayList<SceneEntity2d>();
