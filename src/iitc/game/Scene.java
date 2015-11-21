@@ -16,6 +16,7 @@ import java.util.List;
  */
 public class Scene {
     private final Set<SceneEntity2d> entities = new HashSet<SceneEntity2d>();
+    private final Map<SceneEntity2d, List<SceneEntity2d>> visited = new HashMap<SceneEntity2d, List<SceneEntity2d>>();
     private final Map<SceneEntity2d, Long> updateTimes = new HashMap<SceneEntity2d, Long>();
     private final Rectangle bounds;
     private BufferedImage image;
@@ -65,34 +66,21 @@ public class Scene {
     //TODO:Do some pruning to the entity sets for collisions to optimize larger entity sets
     public synchronized void update() {
         synchronized (entities) {
-            Map<SceneEntity2d, List<SceneEntity2d>> visited = new HashMap<SceneEntity2d, List<SceneEntity2d>>();
             for (SceneEntity2d entity : entities) {
-                Cartesian2d entityPosition = entity.getPosition();
-                Vector2d entityVelocity = entity.getVelocity();
-                Dimension2d entitySize = entity.getSize();
                 List<SceneEntity2d> entityVisits = visited.get(entity);
-                double entityX = entityPosition.getX();
-                double entityY = entityPosition.getY();
-                double entityMaxX = entityX + entitySize.getWidth();
-                double entityMaxY = entityY + entitySize.getHeight();
                 Rectangle rectangle = new Rectangle(entity.getPosition(), entity.getSize());
                 for (SceneEntity2d opposition : entities) {
-                    if ((entityVisits != null && entityVisits.contains(opposition)) || opposition.equals(entity))
+                    Cartesian2d oppositionPosition = opposition.getPosition();
+                    Dimension2d oppositionSize = opposition.getSize();
+                    if ((entityVisits != null && entityVisits.contains(opposition)) || opposition.equals(entity)) {
+                        if (entityVisits != null && !rectangle.intersects(oppositionPosition, oppositionSize))
+                            entityVisits.remove(opposition);
                         continue;
+                    }
                     List<SceneEntity2d> oppositeVisits = visited.get(opposition);
                     if (oppositeVisits != null && oppositeVisits.contains(entity))
                         continue;
-                    Cartesian2d oppositionPosition = opposition.getPosition();
-                    Vector2d oppositionVelocity = opposition.getVelocity();
-                    Dimension2d oppositionSize = opposition.getSize();
                     if (rectangle.intersects(oppositionPosition, oppositionSize)) {
-                        //TODO:Correct to relieve all issues of interior collision by allowing objects escaping the containing object to continue moving
-                        double oppositionX = oppositionPosition.getX();
-                        double oppositionY = oppositionPosition.getY();
-                        double oppositionMaxX = oppositionX + oppositionSize.getWidth();
-                        double oppositionMaxY = oppositionY + oppositionSize.getHeight();
-                        if ((entityX < oppositionX && oppositionMaxX > entityMaxX && entityVelocity.getX() < 0 && oppositionVelocity.getX() > 0) || (entityY < oppositionY && oppositionMaxY > entityMaxY && entityVelocity.getY() < 0 && oppositionVelocity.getY() > 0))
-                            continue;
                         VectorPair2d pair = Motion.getCollisionVelocity(entity, opposition);
                         entity.setVelocity(pair.getLeft());
                         opposition.setVelocity(pair.getRight());
@@ -101,22 +89,19 @@ public class Scene {
                             visited.put(entity, entityVisits);
                         }
                         entityVisits.add(opposition);
+                    } else if (entityVisits != null) {
+                        entityVisits.remove(opposition);
                     }
                 }
                 for (SceneEntity2d wall : walls) {
-                    if ((entityVisits != null && entityVisits.contains(wall)) || wall.equals(entity))
-                        continue;
                     Cartesian2d wallPosition = wall.getPosition();
-                    Vector2d wallVelocity = wall.getVelocity();
                     Dimension2d wallSize = wall.getSize();
+                    if ((entityVisits != null && entityVisits.contains(wall)) || wall.equals(entity)) {
+                        if (entityVisits != null && !rectangle.intersects(wallPosition, wallSize))
+                            entityVisits.remove(wall);
+                        continue;
+                    }
                     if (rectangle.intersects(wallPosition, wallSize)) {
-                        //TODO:Correct to relieve all issues of interior collision by allowing objects escaping the containing object to continue moving
-                        double wallX = wallPosition.getX();
-                        double wallY = wallPosition.getY();
-                        double wallMaxX = wallX + wallSize.getWidth();
-                        double wallMaxY = wallY + wallSize.getHeight();
-                        if ((entityX < wallX && wallMaxX > entityMaxX && entityVelocity.getX() < 0 && wallVelocity.getX() > 0) || (entityY < wallY && wallMaxY > entityMaxY && entityVelocity.getY() < 0 && wallVelocity.getY() > 0))
-                            continue;
                         VectorPair2d pair = Motion.getCollisionVelocity(entity, wall);
                         entity.setVelocity(pair.getLeft());
                         if (entityVisits == null) {
@@ -124,6 +109,8 @@ public class Scene {
                             visited.put(entity, entityVisits);
                         }
                         entityVisits.add(wall);
+                    } else if (entityVisits != null) {
+                        entityVisits.remove(wall);
                     }
                 }
             }
