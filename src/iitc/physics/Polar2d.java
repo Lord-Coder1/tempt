@@ -38,6 +38,7 @@ public class Polar2d {
     public boolean equals(Object o) {
         return o instanceof Polar2d && getRadius() == ((Polar2d) o).getRadius() && getTheta() == ((Polar2d) o).getTheta();
     }
+
     @Override
     public String toString() {
         return String.format("%s[radius=%s, theta=%s]", getClass().getCanonicalName(), getRadius(), getTheta());

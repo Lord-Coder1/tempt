@@ -34,6 +34,10 @@ public class Entity3d extends Entity {
         return getMotion().getPosition();
     }
 
+    public void setPosition(Cartesian3d position) {
+        getMotion().setPosition(position);
+    }
+
     public void setPosition(double x, double y) {
         getMotion().setPosition(x, y);
     }
@@ -42,12 +46,12 @@ public class Entity3d extends Entity {
         getMotion().setPosition(x, y, z);
     }
 
-    public void setPosition(Cartesian3d position) {
-        getMotion().setPosition(position);
-    }
-
     public Vector3d getVelocity() {
         return getMotion().getVelocity();
+    }
+
+    public void setVelocity(Vector3d velocity) {
+        getMotion().setVelocity(velocity);
     }
 
     public void setVelocity(double x, double y) {
@@ -58,12 +62,12 @@ public class Entity3d extends Entity {
         getMotion().setVelocity(x, y, z);
     }
 
-    public void setVelocity(Vector3d velocity) {
-        getMotion().setVelocity(velocity);
-    }
-
     public Vector3d getAcceleration() {
         return getMotion().getAcceleration();
+    }
+
+    public void setAcceleration(Vector3d acceleration) {
+        getMotion().setAcceleration(acceleration);
     }
 
     public void setAcceleration(double x, double y) {
@@ -72,10 +76,6 @@ public class Entity3d extends Entity {
 
     public void setAcceleration(double x, double y, double z) {
         getMotion().setAcceleration(x, y, z);
-    }
-
-    public void setAcceleration(Vector3d acceleration) {
-        getMotion().setAcceleration(acceleration);
     }
 
     @Override

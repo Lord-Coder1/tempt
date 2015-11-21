@@ -34,36 +34,36 @@ public class Entity2d extends Entity {
         return getMotion().getPosition();
     }
 
-    public void setPosition(double x, double y) {
-        getMotion().setPosition(x, y);
-    }
-
     public void setPosition(Cartesian2d position) {
         getMotion().setPosition(position);
+    }
+
+    public void setPosition(double x, double y) {
+        getMotion().setPosition(x, y);
     }
 
     public Vector2d getVelocity() {
         return getMotion().getVelocity();
     }
 
-    public void setVelocity(double x, double y) {
-        getMotion().setVelocity(x, y);
-    }
-
     public void setVelocity(Vector2d velocity) {
         getMotion().setVelocity(velocity);
+    }
+
+    public void setVelocity(double x, double y) {
+        getMotion().setVelocity(x, y);
     }
 
     public Vector2d getAcceleration() {
         return getMotion().getAcceleration();
     }
 
-    public void setAcceleration(double x, double y) {
-        getMotion().setAcceleration(x, y);
-    }
-
     public void setAcceleration(Vector2d acceleration) {
         getMotion().setAcceleration(acceleration);
+    }
+
+    public void setAcceleration(double x, double y) {
+        getMotion().setAcceleration(x, y);
     }
 
     @Override

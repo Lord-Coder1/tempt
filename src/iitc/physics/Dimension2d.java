@@ -71,6 +71,7 @@ public class Dimension2d {
                 getWidth() == ((Dimension2d) o).getWidth() &&
                 getHeight() == ((Dimension2d) o).getHeight();
     }
+
     @Override
     public String toString() {
         return String.format("%s[width=%s, height=%s]", getClass().getCanonicalName(), getWidth(), getHeight());

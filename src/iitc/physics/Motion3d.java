@@ -44,6 +44,10 @@ public class Motion3d {
         return position;
     }
 
+    public void setPosition(Cartesian3d position) {
+        this.position = position;
+    }
+
     public void setPosition(double x, double y) {
         setPosition(new Cartesian3d(x, y));
     }
@@ -52,12 +56,12 @@ public class Motion3d {
         setPosition(new Cartesian3d(x, y, z));
     }
 
-    public void setPosition(Cartesian3d position) {
-        this.position = position;
-    }
-
     public Vector3d getVelocity() {
         return velocity;
+    }
+
+    public void setVelocity(Vector3d velocity) {
+        this.velocity = velocity;
     }
 
     public void setVelocity(double x, double y) {
@@ -68,12 +72,12 @@ public class Motion3d {
         setVelocity(new Vector3d(x, y, z));
     }
 
-    public void setVelocity(Vector3d velocity) {
-        this.velocity = velocity;
-    }
-
     public Vector3d getAcceleration() {
         return acceleration;
+    }
+
+    public void setAcceleration(Vector3d acceleration) {
+        this.acceleration = acceleration;
     }
 
     public void setAcceleration(double x, double y) {
@@ -82,9 +86,5 @@ public class Motion3d {
 
     public void setAcceleration(double x, double y, double z) {
         setAcceleration(new Vector3d(x, y, z));
-    }
-
-    public void setAcceleration(Vector3d acceleration) {
-        this.acceleration = acceleration;
     }
 }

@@ -1,5 +1,7 @@
 package iitc.game;
 
+import iitc.physics.Rectangle;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -10,15 +12,17 @@ import java.awt.image.BufferedImage;
  * @version 1.0
  */
 public class SceneView {
+    private final Scene scene;
     private BufferedImage image;
     private Color background;
-    private final Scene scene;
 
     public SceneView(Scene scene) {
         this(scene, null);
     }
 
     public SceneView(Scene scene, Color background) {
+        if (scene == null)
+            throw new IllegalArgumentException();
         this.scene = scene;
         this.background = background;
     }
@@ -39,7 +43,7 @@ public class SceneView {
         BufferedImage image = getImage();
         if (image != null)
             return image;
-        iitc.physics.Rectangle bounds = scene.getBounds();
+        Rectangle bounds = scene.getBounds();
         if (bounds == null)
             return null;
         image = new BufferedImage((int) Math.round(bounds.getWidth()), (int) Math.round(bounds.getHeight()), BufferedImage.TYPE_INT_ARGB);
