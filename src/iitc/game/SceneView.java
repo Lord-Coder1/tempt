@@ -33,6 +33,7 @@ public class SceneView {
 
     public void update() {
         scene.update();
+        invalidate();
     }
 
     public void invalidate() {

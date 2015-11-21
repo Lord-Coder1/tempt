@@ -42,7 +42,6 @@ public class GameTest {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.update();
-                view.invalidate();
                 icon.setImage(view.render());
                 frame.repaint();
             }
