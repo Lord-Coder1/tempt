@@ -43,6 +43,7 @@ public class Scene {
         walls[1].setPosition(0, -halfHeight);
         walls[2].setPosition(width, 0);
         walls[3].setPosition(0, height);
+        Collections.addAll(entities, walls);
     }
 
     public void add(SceneEntity2d entity) {
@@ -56,6 +57,10 @@ public class Scene {
 
     public SceneEntity2d[] getEntities() {
         return entities.toArray(new SceneEntity2d[entities.size()]);
+    }
+
+    public Wall[] getWalls() {
+        return Arrays.copyOf(walls, walls.length);
     }
 
     public void clear() {
@@ -91,26 +96,6 @@ public class Scene {
                         entityVisits.add(opposition);
                     } else if (entityVisits != null) {
                         entityVisits.remove(opposition);
-                    }
-                }
-                for (SceneEntity2d wall : walls) {
-                    Cartesian2d wallPosition = wall.getPosition();
-                    Dimension2d wallSize = wall.getSize();
-                    if ((entityVisits != null && entityVisits.contains(wall)) || wall.equals(entity)) {
-                        if (entityVisits != null && !rectangle.intersects(wallPosition, wallSize))
-                            entityVisits.remove(wall);
-                        continue;
-                    }
-                    if (rectangle.intersects(wallPosition, wallSize)) {
-                        VectorPair2d pair = Motion.getCollisionVelocity(entity, wall);
-                        entity.setVelocity(pair.getLeft());
-                        if (entityVisits == null) {
-                            entityVisits = new ArrayList<SceneEntity2d>();
-                            visited.put(entity, entityVisits);
-                        }
-                        entityVisits.add(wall);
-                    } else if (entityVisits != null) {
-                        entityVisits.remove(wall);
                     }
                 }
             }
