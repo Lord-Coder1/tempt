@@ -11,6 +11,7 @@ public class Motion {
     }
 
     //TODO:Add separate wall-based code to infinitesimal masses and auto-generate the dot products t
+    //TODO:Fix angles involved in calculations
     public static VectorPair2d getCollisionVelocity(Entity2d left, Entity2d right) {
         if (left == null || right == null)
             return null;
