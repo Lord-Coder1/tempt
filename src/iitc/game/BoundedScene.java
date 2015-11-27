@@ -2,7 +2,6 @@ package iitc.game;
 
 import iitc.physics.Dimension2d;
 import iitc.physics.Rectangle;
-import iitc.physics.Wall;
 
 import java.util.Arrays;
 
@@ -13,16 +12,16 @@ import java.util.Arrays;
  * @version 1.0
  */
 public class BoundedScene extends Scene {
-    private final Wall[] walls;
+    private final SceneEntity2d[] walls;
 
     public BoundedScene(double x, double y, double width, double height) {
         super(x, y, width, height);
         double halfHeight = height / 2.0d;
         double halfWidth = width / 2.0d;
-        this.walls = new Wall[]{new Wall(new Dimension2d(halfWidth, height), Wall.Side.LEFT),
-                new Wall(new Dimension2d(width, halfHeight), Wall.Side.TOP),
-                new Wall(new Dimension2d(halfWidth, height), Wall.Side.RIGHT),
-                new Wall(new Dimension2d(width, halfHeight), Wall.Side.BOTTOM)};
+        this.walls = new SceneEntity2d[]{new SceneEntity2d(Double.MAX_VALUE, new Dimension2d(halfWidth, height)),
+                new SceneEntity2d(Double.MAX_VALUE, new Dimension2d(width, halfHeight)),
+                new SceneEntity2d(Double.MAX_VALUE, new Dimension2d(halfWidth, height)),
+                new SceneEntity2d(Double.MAX_VALUE, new Dimension2d(width, halfHeight))};
         walls[0].setPosition(x - halfWidth, y);
         walls[1].setPosition(x, y - halfHeight);
         walls[2].setPosition(x + width, 0);
@@ -39,10 +38,10 @@ public class BoundedScene extends Scene {
         double height = bounds.getHeight();
         double halfHeight = height / 2.0d;
         double halfWidth = width / 2.0d;
-        this.walls = new Wall[]{new Wall(new Dimension2d(halfWidth, height), Wall.Side.LEFT),
-                new Wall(new Dimension2d(width, halfHeight), Wall.Side.TOP),
-                new Wall(new Dimension2d(halfWidth, height), Wall.Side.RIGHT),
-                new Wall(new Dimension2d(width, halfHeight), Wall.Side.BOTTOM)};
+        this.walls = new SceneEntity2d[]{new SceneEntity2d(Double.MAX_VALUE, new Dimension2d(halfWidth, height)),
+                new SceneEntity2d(Double.MAX_VALUE, new Dimension2d(width, halfHeight)),
+                new SceneEntity2d(Double.MAX_VALUE, new Dimension2d(halfWidth, height)),
+                new SceneEntity2d(Double.MAX_VALUE, new Dimension2d(width, halfHeight))};
         walls[0].setPosition(x - halfWidth, y);
         walls[1].setPosition(x, y - halfHeight);
         walls[2].setPosition(x + width, 0);
@@ -50,7 +49,7 @@ public class BoundedScene extends Scene {
         add(walls);
     }
 
-    public Wall[] getWalls() {
+    public SceneEntity2d[] getWalls() {
         return Arrays.copyOf(walls, walls.length);
     }
 }

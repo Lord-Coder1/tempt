@@ -68,7 +68,7 @@ public class Scene {
                     if (oppositeVisits != null && oppositeVisits.contains(entity))
                         continue;
                     if (rectangle.intersects(oppositionPosition, oppositionSize)) {
-                        VectorPair2d pair = Motion.getCollisionVelocity(entity, opposition);
+                        VectorPair2d pair = Motion.getCollision(entity, opposition);
                         entity.setVelocity(pair.getLeft());
                         opposition.setVelocity(pair.getRight());
                         if (entityVisits == null) {

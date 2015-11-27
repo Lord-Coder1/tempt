@@ -33,6 +33,13 @@ public class Vector2d {
         this.y = vector.getY();
     }
 
+    public Vector2d(Cartesian2d one, Cartesian2d two) {
+        if (one == null || two == null)
+            throw new IllegalArgumentException();
+        this.x = two.getX() - one.getX();
+        this.y = two.getY() - one.getY();
+    }
+
     public Vector2d(double x, double y) {
         this.x = x;
         this.y = y;

@@ -32,6 +32,14 @@ public class Vector3d {
         this.z = vector.getZ();
     }
 
+    public Vector3d(Cartesian3d one, Cartesian3d two) {
+        if (one == null || two == null)
+            throw new IllegalArgumentException();
+        this.x = two.getX() - one.getX();
+        this.y = two.getY() - one.getY();
+        this.z = two.getX() - one.getZ();
+    }
+
     public Vector3d(double x, double y) {
         this(x, y, 0);
     }

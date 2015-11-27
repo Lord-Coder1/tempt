@@ -23,13 +23,12 @@ public class GameTest {
         final Scene scene = new BoundedScene(0, 0, 900, 900);
         final SceneView view = new SceneView(scene);
         view.setBackground(Color.BLACK);
-        SceneEntity2d paddle = new SceneEntity2d(50, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
-        paddle.setPosition(50, 50);
-        paddle.setVelocity(600, 0);
+        SceneEntity2d paddle = new SceneEntity2d(Double.MAX_VALUE, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
+        paddle.setPosition(400, 20);
         scene.add(paddle);
         SceneEntity2d paddle2 = new SceneEntity2d(50, new Dimension2d(100, 10), ImageIO.read(new URL("http://swingame.com/wiki/images/7/7c/Paddle.png")));
-        paddle2.setPosition(750, 50);
-        paddle2.setVelocity(-600, 575);
+        paddle2.setPosition(350, 400);
+        paddle2.setVelocity(50, -400);
         scene.add(paddle2);
         final JFrame frame = new JFrame("Game Test");
         final ImageIcon icon = new ImageIcon(view.render());

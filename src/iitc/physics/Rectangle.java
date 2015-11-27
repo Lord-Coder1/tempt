@@ -167,4 +167,17 @@ public class Rectangle implements Shape2d {
     public String toString() {
         return String.format("%s[x=%s, y=%s, width=%s, height=%s]", getClass().getCanonicalName(), getX(), getY(), getWidth(), getHeight());
     }
+
+    public static enum Side {
+        LEFT(Vector2d.EAST), TOP(Vector2d.SOUTH), RIGHT(Vector2d.WEST), BOTTOM(Vector2d.NORTH);
+        private final Vector2d normal;
+
+        Side(Vector2d normal) {
+            this.normal = normal;
+        }
+
+        public Vector2d getNormal() {
+            return normal;
+        }
+    }
 }
