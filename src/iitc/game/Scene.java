@@ -11,9 +11,9 @@ import java.util.*;
  * @version 1.0
  */
 public class Scene {
-    private final Set<SceneEntity2d> entities = new HashSet<SceneEntity2d>();
-    private final Map<SceneEntity2d, List<SceneEntity2d>> visited = new HashMap<SceneEntity2d, List<SceneEntity2d>>();
-    private final Map<SceneEntity2d, Long> updateTimes = new HashMap<SceneEntity2d, Long>();
+    private final Set<SceneEntity2d> entities = new HashSet<>();
+    private final Map<SceneEntity2d, List<SceneEntity2d>> visited = new HashMap<>();
+    private final Map<SceneEntity2d, Long> updateTimes = new HashMap<>();
     private final Rectangle bounds;
 
     public Scene(double x, double y, double width, double height) {
@@ -72,7 +72,7 @@ public class Scene {
                         entity.setVelocity(pair.getLeft());
                         opposition.setVelocity(pair.getRight());
                         if (entityVisits == null) {
-                            entityVisits = new ArrayList<SceneEntity2d>();
+                            entityVisits = new ArrayList<>();
                             visited.put(entity, entityVisits);
                         }
                         entityVisits.add(opposition);
