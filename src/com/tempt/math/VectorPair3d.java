@@ -1,4 +1,4 @@
-package iitc.physics;
+package com.tempt.math;
 
 import java.util.Objects;
 
@@ -8,22 +8,22 @@ import java.util.Objects;
  * @author Ian
  * @version 1.0
  */
-public class VectorPair2d {
-    private final Vector2d left;
-    private final Vector2d right;
+public class VectorPair3d {
+    private final Vector3d left;
+    private final Vector3d right;
 
-    public VectorPair2d(Vector2d left, Vector2d right) {
+    public VectorPair3d(Vector3d left, Vector3d right) {
         if (left == null || right == null)
             throw new IllegalArgumentException();
         this.left = left;
         this.right = right;
     }
 
-    public Vector2d getLeft() {
+    public Vector3d getLeft() {
         return left;
     }
 
-    public Vector2d getRight() {
+    public Vector3d getRight() {
         return right;
     }
 
@@ -36,7 +36,7 @@ public class VectorPair2d {
 
     @Override
     public boolean equals(Object o) {
-        return o instanceof VectorPair2d && Objects.equals(getLeft(), ((VectorPair2d) o).getLeft()) && Objects.equals(getRight(), ((VectorPair2d) o).getRight());
+        return o instanceof VectorPair3d && Objects.equals(getLeft(), ((VectorPair3d) o).getLeft()) && Objects.equals(getRight(), ((VectorPair3d) o).getRight());
     }
 
     @Override

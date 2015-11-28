@@ -1,7 +1,7 @@
-package iitc.game;
+package com.tempt;
 
-import iitc.physics.Dimension2d;
-import iitc.physics.Rectangle;
+import com.tempt.math.Dimension2d;
+import com.tempt.math.Rectangle;
 
 import java.util.Arrays;
 

@@ -1,6 +1,6 @@
-package iitc.game;
+package com.tempt;
 
-import iitc.physics.Rectangle;
+import com.tempt.math.Rectangle;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

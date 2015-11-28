@@ -1,6 +1,6 @@
-package iitc.game;
+package com.tempt;
 
-import iitc.physics.*;
+import com.tempt.math.*;
 
 import java.util.*;
 

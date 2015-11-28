@@ -1,8 +1,8 @@
-import iitc.game.BoundedScene;
-import iitc.game.Scene;
-import iitc.game.SceneEntity2d;
-import iitc.game.SceneView;
-import iitc.physics.Dimension2d;
+import com.tempt.BoundedScene;
+import com.tempt.Scene;
+import com.tempt.SceneEntity2d;
+import com.tempt.SceneView;
+import com.tempt.math.Dimension2d;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -1,9 +1,9 @@
-package iitc.game;
+package com.tempt;
 
-import iitc.physics.Cartesian2d;
-import iitc.physics.Dimension2d;
-import iitc.physics.Entity2d;
-import iitc.physics.Motion2d;
+import com.tempt.math.Cartesian2d;
+import com.tempt.math.Dimension2d;
+import com.tempt.math.Entity2d;
+import com.tempt.math.Motion2d;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

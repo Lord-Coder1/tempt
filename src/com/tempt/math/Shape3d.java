@@ -1,4 +1,4 @@
-package iitc.physics;
+package com.tempt.math;
 
 /**
  * Shape2d

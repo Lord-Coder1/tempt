@@ -1,4 +1,4 @@
-package iitc.physics;
+package com.tempt.math;
 
 /**
  * Motion3d
