@@ -3,8 +3,8 @@ package com.tempt.math;
 /**
  * Motion2d
  *
- * @author Ian
- * @version 1.0
+ * @author Ian Caffey
+ * @since 1.0
  */
 public class Motion2d {
     private Cartesian2d position;

@@ -3,8 +3,8 @@ package com.tempt.math;
 /**
  * Vector2d
  *
- * @author Ian
- * @version 1.0
+ * @author Ian Caffey
+ * @since 1.0
  */
 public class Vector2d {
     public static final Vector2d ORIGIN = new Vector2d(0, 0);

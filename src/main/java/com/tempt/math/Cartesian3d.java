@@ -3,8 +3,8 @@ package com.tempt.math;
 /**
  * Cartesian2d
  *
- * @author Ian
- * @version 1.0
+ * @author Ian Caffey
+ * @since 1.0
  */
 public class Cartesian3d {
     public static final Cartesian3d ORIGIN = new Cartesian3d(0, 0);

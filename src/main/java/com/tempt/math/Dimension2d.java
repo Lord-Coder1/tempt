@@ -3,8 +3,8 @@ package com.tempt.math;
 /**
  * Dimension2d
  *
- * @author Ian
- * @version 1.0
+ * @author Ian Caffey
+ * @since 1.0
  */
 public class Dimension2d {
     private final double width;

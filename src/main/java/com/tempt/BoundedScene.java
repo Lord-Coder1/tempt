@@ -8,8 +8,8 @@ import java.util.Arrays;
 /**
  * BoundedScene
  *
- * @author Ian
- * @version 1.0
+ * @author Ian Caffey
+ * @since 1.0
  */
 public class BoundedScene extends Scene {
     private final SceneEntity2d[] walls;

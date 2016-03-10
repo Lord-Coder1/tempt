@@ -3,8 +3,8 @@ package com.tempt.math;
 /**
  * Coordinates
  *
- * @author Ian
- * @version 1.0
+ * @author Ian Caffey
+ * @since 1.0
  */
 public class Coordinates {
     private Coordinates() {

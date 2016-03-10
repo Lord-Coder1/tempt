@@ -3,8 +3,8 @@ package com.tempt.math;
 /**
  * Rectangle
  *
- * @author Ian
- * @version 1.0
+ * @author Ian Caffey
+ * @since 1.0
  */
 public class Rectangle implements Shape2d {
     private final double x;

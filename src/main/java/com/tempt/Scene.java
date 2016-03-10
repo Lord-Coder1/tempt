@@ -7,8 +7,8 @@ import java.util.*;
 /**
  * Scene
  *
- * @author Ian
- * @version 1.0
+ * @author Ian Caffey
+ * @since 1.0
  */
 public class Scene {
     private final Set<SceneEntity2d> entities = new HashSet<>();
