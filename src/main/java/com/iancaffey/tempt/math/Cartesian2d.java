@@ -1,4 +1,4 @@
-package com.tempt.math;
+package com.iancaffey.tempt.math;
 
 /**
  * Cartesian2d

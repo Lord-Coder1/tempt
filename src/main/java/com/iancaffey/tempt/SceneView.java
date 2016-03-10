@@ -1,6 +1,6 @@
-package com.tempt;
+package com.iancaffey.tempt;
 
-import com.tempt.math.Rectangle;
+import com.iancaffey.tempt.math.Rectangle;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

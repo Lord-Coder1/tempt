@@ -1,9 +1,9 @@
-package com.tempt;
+package com.iancaffey.tempt;
 
-import com.tempt.math.Cartesian2d;
-import com.tempt.math.Dimension2d;
-import com.tempt.math.Entity2d;
-import com.tempt.math.Motion2d;
+import com.iancaffey.tempt.math.Cartesian2d;
+import com.iancaffey.tempt.math.Dimension2d;
+import com.iancaffey.tempt.math.Entity2d;
+import com.iancaffey.tempt.math.Motion2d;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

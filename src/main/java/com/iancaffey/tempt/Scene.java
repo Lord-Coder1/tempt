@@ -1,6 +1,6 @@
-package com.tempt;
+package com.iancaffey.tempt;
 
-import com.tempt.math.*;
+import com.iancaffey.tempt.math.*;
 
 import java.util.*;
 

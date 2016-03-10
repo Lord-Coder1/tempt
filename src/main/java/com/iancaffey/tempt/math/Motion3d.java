@@ -1,4 +1,4 @@
-package com.tempt.math;
+package com.iancaffey.tempt.math;
 
 /**
  * Motion3d
