@@ -1,12 +1,14 @@
 package com.iancaffey.tempt;
 
-import com.iancaffey.tempt.math.Rectangle;
+import com.iancaffey.tempt.shape.Rectangle;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
 /**
  * SceneView
+ * <p>
+ * A utility class which allows for controlling updating a scene and rendering it to an image.
  *
  * @author Ian Caffey
  * @since 1.0
@@ -16,10 +18,21 @@ public class SceneView {
     private BufferedImage image;
     private Color background;
 
+    /**
+     * Constructs a new {@code SceneView} with the specified scene.
+     *
+     * @param scene the scene to view
+     */
     public SceneView(Scene scene) {
         this(scene, null);
     }
 
+    /**
+     * Constructs a new {@code SceneView} with the specified scene, and background color.
+     *
+     * @param scene      the scene to view
+     * @param background the background color
+     */
     public SceneView(Scene scene, Color background) {
         if (scene == null)
             throw new IllegalArgumentException();
@@ -27,19 +40,35 @@ public class SceneView {
         this.background = background;
     }
 
+    /**
+     * Returns an image which represents the last rendered scene frame.
+     *
+     * @return the image representing the last viewed scene frame
+     */
     public BufferedImage getImage() {
         return image;
     }
 
+    /**
+     * Updates the scene and re-renders the scene.
+     */
     public void update() {
         scene.update();
         invalidate();
     }
 
+    /**
+     * Clears the rendered scene view cache.
+     */
     public void invalidate() {
         image = null;
     }
 
+    /**
+     * Renders the scene to an image.
+     *
+     * @return the newly rendered scene image
+     */
     public BufferedImage render() {
         BufferedImage image = getImage();
         if (image != null)
@@ -60,6 +89,11 @@ public class SceneView {
         return image;
     }
 
+    /**
+     * Renders the lazily-rendered scene to the graphics context.
+     *
+     * @param graphics the graphics context
+     */
     public void render(Graphics graphics) {
         BufferedImage image = render();
         if (image == null)
@@ -67,10 +101,20 @@ public class SceneView {
         graphics.drawImage(image, 0, 0, null);
     }
 
+    /**
+     * Returns the scene view background color.
+     *
+     * @return the background color
+     */
     public Color getBackground() {
         return background;
     }
 
+    /**
+     * Updates the scene view background color.
+     *
+     * @param background the background color
+     */
     public void setBackground(Color background) {
         this.background = background;
     }

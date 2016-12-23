@@ -1,12 +1,14 @@
 package com.iancaffey.tempt;
 
 import com.iancaffey.tempt.math.Dimension2d;
-import com.iancaffey.tempt.math.Rectangle;
+import com.iancaffey.tempt.shape.Rectangle;
 
 import java.util.Arrays;
 
 /**
  * BoundedScene
+ * <p>
+ * A representation of a bounded scene composed of scene entities surrounded by walls on all four sides.
  *
  * @author Ian Caffey
  * @since 1.0
@@ -14,6 +16,14 @@ import java.util.Arrays;
 public class BoundedScene extends Scene {
     private final SceneEntity2d[] walls;
 
+    /**
+     * Constructs a new {@code BoundedScene} with specified bounds.
+     *
+     * @param x      the x-coordinate
+     * @param y      the y-coordinate
+     * @param width  the width
+     * @param height the height
+     */
     public BoundedScene(double x, double y, double width, double height) {
         super(x, y, width, height);
         double halfHeight = height / 2.0d;
@@ -30,6 +40,11 @@ public class BoundedScene extends Scene {
 
     }
 
+    /**
+     * Constructs a new {@code BoundedScene} with specified bounds.
+     *
+     * @param bounds the scene bounds
+     */
     public BoundedScene(Rectangle bounds) {
         super(bounds);
         double x = bounds.getX();
@@ -49,6 +64,11 @@ public class BoundedScene extends Scene {
         add(walls);
     }
 
+    /**
+     * Returns the enclosing walls for the scene.
+     *
+     * @return the enclosing walls
+     */
     public SceneEntity2d[] getWalls() {
         return Arrays.copyOf(walls, walls.length);
     }

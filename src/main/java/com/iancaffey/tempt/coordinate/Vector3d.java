@@ -1,7 +1,9 @@
-package com.iancaffey.tempt.math;
+package com.iancaffey.tempt.coordinate;
 
 /**
  * Vector3d
+ * <p>
+ * A representation of a 3-dimensional vector.
  *
  * @author Ian Caffey
  * @since 1.0

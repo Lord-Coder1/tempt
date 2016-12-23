@@ -1,7 +1,9 @@
-package com.iancaffey.tempt.math;
+package com.iancaffey.tempt.coordinate;
 
 /**
  * Vector2d
+ * <p>
+ * A representation of a 2-dimensional vector.
  *
  * @author Ian Caffey
  * @since 1.0
